@@ -7,6 +7,33 @@
 <head>
 <meta charset="UTF-8">
 <title>sayingAll</title>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+#sayings {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#sayings td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#sayings tr:nth-child(even){background-color: #f2f2f2;}
+
+#sayings tr:hover {background-color: #ddd;}
+
+#sayings th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #FFB6C1;
+  color: white;
+}
+</style>
 </head>
 <body>
 	
