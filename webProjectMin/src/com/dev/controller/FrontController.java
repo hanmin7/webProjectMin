@@ -42,6 +42,7 @@ public class FrontController extends HttpServlet {
     	list.put("/reviewInsert.do", new ReviewInsertController());
     	list.put("/reviewList.do", new ReviewListController());
     	list.put("/reviewUpdate.do", new ReviewUpdateController());
+    	list.put("/reviewDelete.do", new ReviewDeleteController());
 	}
 
     //요청시마다 service()

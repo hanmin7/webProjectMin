@@ -136,7 +136,23 @@ public class ReviewDAO {
 	} //selectOne
 	
 	
-	
+	public int delete(ReviewVo reviewVo) {
+		int r=0;
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "DELETE reviews WHERE ID=? and saying_number=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, reviewVo.getId());
+			pstmt.setString(2, reviewVo.getSaying_number());
+			r = pstmt.executeUpdate();
+			System.out.println(r + "건이 수정됨");
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(null, pstmt, conn);
+		}
+		return r;
+	} //삭제
 	
 	
 	

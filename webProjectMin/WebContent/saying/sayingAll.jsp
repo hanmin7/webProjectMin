@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>sayingAll</title>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <style>
 #sayings {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -34,6 +34,13 @@
   color: white;
 }
 </style>
+<script>
+	$(document).ready(function(){
+		$("#cate").on("change", function(){
+			$("#catefrm").submit();
+		});
+	});
+</script>
 </head>
 <body>
 	
@@ -49,17 +56,26 @@
 	<table border="1" id="sayings">
 		<thead>
 			<tr>
-				<th>num</th>
+				
 				<th>saying</th>
 				<th>person</th>
-				<th>category</th>
+				<th>
+					<form id="catefrm" action="${pageContext.request.contextPath}/sayingList.do">
+						<select id="cate" name="cate" size="1">
+								<option value="all">category전체</option>
+									<c:forEach items="${clist}" var="catelist">
+										<option value="${catelist}" <c:if test="${catelist==param.cate}">selected="selected"</c:if>>${catelist}</option>
+									</c:forEach>
+						</select>
+					</form>
+				</th>
 			</tr>
 		</thead>
 		<tbody>
 		<c:forEach items="${slist}" var="saylist">
 			<tr>
-				<td><a href="sayingSelectOne.do?num=${saylist.getSaying_number()}">${saylist.getSaying_number()}</a></td>
-				<td>${saylist.getSaying()}</td>
+				
+				<td><a href="sayingSelectOne.do?num=${saylist.getSaying_number()}">${saylist.getSaying()}</a></td>
 				<td>${saylist.getPerson()}</td>
 				<td>${saylist.getCategory()}</td>
 			</tr>

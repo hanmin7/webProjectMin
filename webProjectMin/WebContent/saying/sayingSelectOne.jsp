@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>sayingSelectOne</title>
+<link rel="stylesheet" href="css/table.css">
 </head>
 <body>
 	<h3 class="page_title">명언선택</h3>
@@ -18,8 +19,8 @@
 		</ul>
 	</div>
 	<div>
-		<label for="saying">선택한 명언</label><br>
-		<span>${saying.saying}</span>
+		<label for="saying">선택한 명언</label><br><br>
+		<span id="select">${saying.saying}</span>
 	</div>
 	<br><br>
 	<div class="regist">

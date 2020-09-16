@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>reviewList.jsp</title>
+<link rel="stylesheet" href="css/table.css">
 </head>
 <body>
 	<h3 class="page_title">reviewList</h3>
@@ -24,6 +25,7 @@
 				<th>saying</th>
 				<th>person</th>
 				<th>review</th>
+				<th>delete</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,6 +35,11 @@
 					${reviewlist.saying}</a></td>
 				<td>${reviewlist.person}</td>
 				<td>${reviewlist.review}</td>
+					<td><form action="${pageContext.request.contextPath}/reviewDelete.do">
+					
+						<input name="saying_number" value="${reviewlist.saying_number}" type="hidden">
+						<button>삭제</button>
+					</form></td>
 			</tr>
 		</c:forEach>
 		</tbody>

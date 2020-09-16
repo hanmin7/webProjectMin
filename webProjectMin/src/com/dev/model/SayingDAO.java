@@ -20,6 +20,25 @@ public class SayingDAO {
 		return instance;
 	}
 		
+	public ArrayList<String> selectCateDISTINCT(){
+		ResultSet rs = null;
+		ArrayList<String> list = new ArrayList<String>();
+		try {
+			conn = ConnectionManager.getConnnect();
+			String sql = "select DISTINCT category from sayings";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) { //list니까 while문 사용
+				list.add(rs.getString("category"));
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(rs, pstmt, conn);
+		}
+		return list;
+	}
+	
 	
 	
 	//전체조회
@@ -49,6 +68,38 @@ public class SayingDAO {
 		}
 		return list;  //담은 list를 리턴.
 	}//selectAll
+	
+	
+	
+	//카테조회
+		public ArrayList<SayingVo> selectCate(SayingVo sayingVo){
+			SayingVo resultVo = null;
+			ResultSet rs = null;
+			ArrayList<SayingVo> list = new ArrayList<SayingVo>();
+			try {
+				conn = ConnectionManager.getConnnect();
+				String sql = "SELECT saying_number, saying, person, category"
+							+ " FROM sayings "
+							+ " WHERE category = ?"
+							+ " ORDER BY saying_number";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, sayingVo.getCategory());
+				rs = pstmt.executeQuery();
+				while(rs.next()) { //list니까 while문 사용
+					resultVo = new SayingVo();
+					resultVo.setSaying_number(rs.getString("saying_number"));
+					resultVo.setSaying(rs.getString("saying"));
+					resultVo.setPerson(rs.getString("person"));
+					resultVo.setCategory(rs.getString("category"));
+					list.add(resultVo); //resultVo를 list에 담음
+				} 
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				ConnectionManager.close(rs, pstmt, conn);
+			}
+			return list;  //담은 list를 리턴.
+		}//selectCate
 	
 	
 	

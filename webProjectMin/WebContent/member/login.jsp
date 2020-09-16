@@ -61,7 +61,7 @@ color: #FF69B4;
             <div id="login-row" class="row justify-content-center align-items-center">
                 <div id="login-column" class="col-md-6">
                     <div id="login-box" class="col-md-12">
-                        <form id="frm" name="frm" class="form" action="../login.do" method="post">
+                        <form id="frm" name="frm" class="form" action="${pageContext.request.contextPath}/login.do" method="post">
                         	<br>
                             <h3 class="text-center text-info">Login</h3>
                             <div class="form-group">
@@ -70,7 +70,7 @@ color: #FF69B4;
                             </div>
                             <div class="form-group">
                                 <label for="pw" class="text-info">Password:</label><br>
-                                <input type="text" name="pw" id="pw" class="form-control">
+                                <input type="password" name="pw" id="pw" class="form-control">
                             </div>
                             <div class="form-group">
                             	<br>
